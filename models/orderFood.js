@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const OrderFoodSchema = new mongoose.Schema({
     foodId : {type:String, required:true, ref: "food"},
-    userId : {type:String, required:true, ref: "user"},
+    userId : {type:String, required:true, ref: "users"},
 }, {timestamps:true});
 
 const Orderfood = mongoose.model('order-food', OrderFoodSchema);

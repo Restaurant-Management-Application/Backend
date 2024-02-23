@@ -42,6 +42,7 @@ app.get('/food/:id', async function(req, res){
     try{
         let {id} = req.params;
         let food = await FoodModel.findById(id).populate("categoryId");
+        // console.log(food)
         res.send(food);
     }catch(e){
         res.status(500).send(e.message)
@@ -52,7 +53,15 @@ app.put('/food/update/:id', async function(req, res){
     try{
         let {id} = req.params;
         let updateFood = await FoodModel.findByIdAndUpdate(id, req.body);
-        res.send(updateFood);       
+        if(!updateFood) {
+            return res.status(404).send({
+                message: "Food does not exist"
+            })
+        }
+        return res.status(200).send({
+            message: "Food details updated",
+            data: updateFood,
+        })
 
     }catch(e){
         res.status(500).send(e.message)

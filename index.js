@@ -18,6 +18,7 @@ const user = require("./routes/user");
 const waiter = require("./routes/waiter");
 const foodCategory = require("./routes/food-category");
 const food = require("./routes/food");
+const orderFood = require("./routes/orderFood");
 
 // const authRoute = require("../Backend/controllers/auth.admin.login")
 
@@ -36,7 +37,7 @@ app.use("/", kitchenStaff );
 app.use("/", deliveryPersonnel);
 app.use("/", user);
 app.use("/", waiter);
-// app.use("/", order)
+app.use("/", orderFood);
 
 const URI = process.env.MONGO_URL;
 
