@@ -104,7 +104,7 @@ app.get('/kitchen-staff', async function(req, res) {
 app.get("/kitchen-staff/:id", async function(req, res) {
     try{
         let {id} = req.params;
-        let kitchenStaff = await KitchenStaffModel.findById(id);
+        let kitchenStaff = await KitchenStaffModel.findById(id).populate('orderId');
 
         const token = kitchenStaff.token;
         res.send({ kitchenStaff, token });

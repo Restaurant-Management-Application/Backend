@@ -104,7 +104,7 @@ app.get('/delivery-personnels', async function(req, res) {
 app.get("/delivery-personnel/:id", async function(req, res) {
     try{
         let {id} = req.params;
-        let deliveryPersonnel = await DeliveryPersonnelModel.findById(id);
+        let deliveryPersonnel = await DeliveryPersonnelModel.findById(id).populate('orderId');
 
         const token = deliveryPersonnel.token;
         res.send({ deliveryPersonnel, token });

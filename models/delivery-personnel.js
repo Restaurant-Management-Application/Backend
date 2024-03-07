@@ -5,7 +5,8 @@ const DeliveryPersonnelSchema = new mongoose.Schema({
     email: {type: String, required: true},
     phone: {type: String, required: true},
     password: {type:String, required:true},
-    role: {type:String, default: ''}
+    role: {type:String, default: ''},
+    orderId: [{type: mongoose.Schema.Types.ObjectId, ref: 'order-food'}]
 }, {timestamps:true})
 
 const DeliveryPersonnel = mongoose.model('delivery-personnel', DeliveryPersonnelSchema);
